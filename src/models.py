@@ -24,6 +24,7 @@ class Planet(Base):
      climate = Column(String) 
      terrain = Column(String) 
      population = Column(Integer) 
+
      favorites = relationship('Favorite', back_populates='planet') 
      
 class Character(Base): 
@@ -33,6 +34,7 @@ class Character(Base):
     species = Column(String) 
     homeworld = Column(String) 
     affiliation = Column(String) 
+
     favorites = relationship('Favorite', back_populates='character') 
      
 class Favorite(Base):
@@ -41,13 +43,14 @@ class Favorite(Base):
      user_id = Column(Integer, ForeignKey('user.id'), nullable=False) 
      planet_id = Column(Integer, ForeignKey('planet.id'), nullable=True) 
      character_id = Column(Integer, ForeignKey('character.id'), nullable=True) 
+     
      user = relationship('User', back_populates='favorites') 
      planet = relationship('Planet', back_populates='favorites') 
      character = relationship('Character', back_populates='favorites')
 
 
 
-    def to_dict(self):
+def to_dict(self):
         return {}
 
 ## Draw from SQLAlchemy base
