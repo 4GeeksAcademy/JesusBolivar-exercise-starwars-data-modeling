@@ -22,9 +22,9 @@ class Planet(Base):
      __tablename__ = 'planet' 
      id = Column(Integer, primary_key=True) 
      name = Column(String(30), unique=True, nullable=False) 
-     climate = Column(String()) 
-     terrain = Column(String) 
-     population = Column(Integer) 
+     climate = Column(String(30)) 
+     terrain = Column(String(30)) 
+     population = Column(Integer(30)) 
 
      favorites = relationship('Favorite', back_populates='planet') 
      
