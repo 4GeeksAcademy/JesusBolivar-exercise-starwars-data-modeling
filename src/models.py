@@ -10,18 +10,19 @@ Base = declarative_base()
 class User(Base): 
     __tablename__ = 'user' 
     id = Column(Integer, primary_key=True) 
-    username = Column(String, unique=True, nullable=False) 
-    email = Column(String, unique=True, nullable=False) 
-    password = Column(String, nullable=False) 
-    firstname = Column(String) lastname = Column(String) 
+    username = Column(String(40), unique=True, nullable=False) 
+    email = Column(String(40), unique=True, nullable=False) 
+    password = Column(String(80), nullable=False) 
+    firstname = Column(String(50)) 
+    lastname = Column(String(50)) 
      
     favorites = relationship('Favorite', back_populates='user')
     
 class Planet(Base):
      __tablename__ = 'planet' 
      id = Column(Integer, primary_key=True) 
-     name = Column(String, unique=True, nullable=False) 
-     climate = Column(String) 
+     name = Column(String(30), unique=True, nullable=False) 
+     climate = Column(String()) 
      terrain = Column(String) 
      population = Column(Integer) 
 
@@ -30,10 +31,10 @@ class Planet(Base):
 class Character(Base): 
     __tablename__ = 'character' 
     id = Column(Integer, primary_key=True) 
-    name = Column(String, unique=True, nullable=False) 
-    species = Column(String) 
-    homeworld = Column(String) 
-    affiliation = Column(String) 
+    name = Column(String(40), unique=True, nullable=False) 
+    species = Column(String(40)) 
+    homeworld = Column(String(40)) 
+    affiliation = Column(String(40)) 
 
     favorites = relationship('Favorite', back_populates='character') 
      
